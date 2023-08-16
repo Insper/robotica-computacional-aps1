@@ -53,25 +53,32 @@ def ex1_compare_img(img_submitted):
     err = mse(img_submitted, img_expected)
     assert err < 10, "Imagem está muito diferente do esperado"
 
-def test_ex1():
+def run_ex1():
     global delta_1
     start = time.perf_counter()
     img_given = cv2.imread("img/RinTinTin.jpg", cv2.IMREAD_GRAYSCALE)
     img_submitted = equaliza(img_given)
     delta_1 = time.perf_counter() - start
+    return img_submitted
+def test_ex1():
+    img_submitted = run_ex1()
 
+    assert f'{np.mean(img_submitted):.3f}' != '33.637', "Não fez"
     test_check_equalizeHist_usage()
     ex1_equalization(img_submitted)
     ex1_compare_img(img_submitted)
 
-
-def test_ex2():
+def run_ex2():
     global delta_2
     start = time.perf_counter()
     img_given = cv2.imread("img/ex2.jpg")
     img_submitted = realca_caixa_vermelha(img_given)
     delta_2 = time.perf_counter() - start
+    return img_submitted, img_given
+def test_ex2():
+    img_submitted, img_given = run_ex2()
 
+    assert f'{np.mean(img_submitted):.3f}' != '154.243', "Não fez"
     assert img_submitted.shape != img_given.shape, "A saída deve ser uma imagem binária"
     
     try:
@@ -102,24 +109,37 @@ def compara_dimensoes(img_expected, img, text=""):
     # check if the image is not too much bigger or smaller than expected
     assert np.all(a >= 0.9) and np.all(a <= 1.1), f"Dimensões da imagem {text}estão fora do esperado"
 
-def test_ex3():
+def run_ex3():
     global delta_3
     start = time.perf_counter()
     img_given = cv2.imread("img/ex3.png")
     img_submitted = recorta_leopardo(img_given)
     delta_3 = time.perf_counter() - start
+    return img_submitted
+def test_ex3():
+    img_submitted = run_ex3()
+
+    assert f'{np.mean(img_submitted):.3f}' != '137.358', "Não fez"
+
     img_expected = cv2.imread("expected_img/ex3_case1.png")
     compara_imagens_alinhando(img_expected, img_submitted)
     compara_dimensoes(img_expected, img_submitted)
 
 
-def test_ex4():
+def run_ex4():
     global delta_4
     start = time.perf_counter()
     img_given = cv2.imread("img/ex4.png")
     img_submitted1 = antartida(img_given)
     img_submitted2 = canada(img_given)
     delta_4 = time.perf_counter() - start
+    return img_submitted1, img_submitted2
+def test_ex4():
+    img_submitted1, img_submitted2 = run_ex4()
+
+    assert f'{np.mean(img_submitted1):.3f}' != '39.153', "Não fez a bandeira da Antártida"
+    assert f'{np.mean(img_submitted2):.3f}' != '39.153', "Não fez a bandeira do Canadá"
+
     img_expected1 = cv2.imread("expected_img/ex4_ant.png")
     img_expected2 = cv2.imread("expected_img/ex4_can.png")
     compara_imagens_alinhando(img_expected1, img_submitted1)
@@ -130,14 +150,19 @@ def test_ex4():
 def ex5_compare_img(img_submitted, img_expected):
     return mse(img_submitted, img_expected)
 
-def test_ex5():
+def run_ex5():
     global delta_5
     start = time.perf_counter()
     img_given = cv2.imread("img/ex5.png")
     img_submitted = realiza_diferencas(img_given)
+    delta_5 = time.perf_counter() - start
+    return img_submitted
+def test_ex5():
+    img_submitted = run_ex5()
+    
+    assert f'{np.mean(img_submitted):.3f}' != '126.082', "Não fez"
     assert np.mean(img_submitted) < 50, "A imagem resultante está saturada! Dica: converta para int32 antes de fazer os cálculos e então converta para int8."
 
-    delta_5 = time.perf_counter() - start
     img_expected_h = cv2.imread("expected_img/ex5h.png",0)
     img_expected_v = cv2.imread("expected_img/ex5v.png",0)
 
@@ -148,27 +173,37 @@ def test_ex5():
     assert err_v > err_h, "Parece que você calculou a diferença entre os pixels na vertical e não na horizontal"
 
 
-
 def ex6_compare_img(img_submitted, img_expected):
     return mse(img_submitted, img_expected)
 
-def test_ex6():
+def run_ex6():
     global delta_6
     start = time.perf_counter()
     img_given = cv2.imread("img/ex6.png",0)
     img_submitted = substitui_x_por_cinza(img_given)
     delta_6 = time.perf_counter() - start
+    return img_submitted
+def test_ex6():
+    img_submitted = run_ex6()
+
+    assert f'{np.mean(img_submitted):.3f}' != '3.559', "Não fez"
+
     img_expected = cv2.imread("expected_img/ex6.png",0)
     err = ex6_compare_img(img_submitted, img_expected)
     assert err < 5, "A imagem resultante está muito diferente do esperado. Verifique se a saída está como o esperado."
 
 
 def test_time_challenge():
+    run_ex1()
+    run_ex2()
+    run_ex3()
+    run_ex4()
+    run_ex5()
+    run_ex6()
+
     assert delta_1 < 0.01, "Tempo de execução do desafio 1 está muito alto, tente uma forma de otimizar seu código - Dica: Cheque os exercícios da atividade 2 do módulo 1." 
     assert delta_2 < 0.05, "Tempo de execução do desafio 2 está muito alto, tente uma forma de otimizar seu código"
     assert delta_3 < 0.05, "Tempo de execução do desafio 3 está muito alto, tente uma forma de otimizar seu código"
     assert delta_4 < 0.05, "Tempo de execução do desafio 4 está muito alto, tente uma forma de otimizar seu código"
     assert delta_5 < 0.05, "Tempo de execução do desafio 5 está muito alto, tente uma forma de otimizar seu código - Dica: O numpy pode subtrair arrays diretamente, ex: direita - esquerda."
     assert delta_6 < 0.05, "Tempo de execução do desafio 6 está muito alto, tente uma forma de otimizar seu código - Dica: Você só precisa olhar para os pixels que são iguais a 255."
-
-
