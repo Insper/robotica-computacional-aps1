@@ -71,6 +71,9 @@ def test_ex2():
     img_given = cv2.imread("img/ex2.jpg")
     img_submitted = realca_caixa_vermelha(img_given)
     delta_2 = time.perf_counter() - start
+
+    assert img_submitted.shape != img_given.shape, "A saída deve ser uma imagem binária"
+    
     try:
         img_submitted = img_submitted[:, :, ::-1]
     except:
