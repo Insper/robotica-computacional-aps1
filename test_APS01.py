@@ -9,6 +9,13 @@ from ex6 import substitui_x_por_cinza
 import time
 import ast
 
+delta_1 = 0
+delta_2 = 0
+delta_3 = 0
+delta_4 = 0
+delta_5 = 0
+delta_6 = 0
+
 def test_check_equalizeHist_usage():
     with open('ex1.py', 'r') as f:
         node = ast.parse(f.read())
