@@ -24,7 +24,7 @@ Se discordar do resultado do teste, verifique se seu código está seguindo o qu
 
 Alguns exercícios possuem um resultado esperado que você pode usar para conferir o seu resultado.
 
-## Exercício 01 (Entrega obrigatória)
+## Exercício 01
 
 Observe a imagem original e seu histograma. Aprendemos que os valores dos pixels de uma imagem estão entre `0` e `255`, mas, analisando o histograma, vemos que a maioria dos pixels estão concentrados entre `~10` e `~60`. Isso significa que a imagem não está usando bem a faixa dinâmica disponível.
 
@@ -46,7 +46,7 @@ Neste momento **não utilize** bibliotecas como OpenCV para realizar o exercicio
 </details>
 </p>
 
-## Exercício 02 (Entrega obrigatória)
+## Exercício 02
 Neste exercício vamos trabalhar com a imagem [ex2.jpg](img/ex2.jpg). No arquivo [ex2.py](ex2.py) seu objetivo neste exercício é fazer a máscara da caixa vermelha, ou seja, criar uma imagem em que somente os pixels da caixa vermelha estão brancos e o restante preto.
 
 ![](img/ex2.jpg)
@@ -65,7 +65,7 @@ Retorne ao que foi feito na `Atividade 4` para relembrar como fazer a máscara d
 </details>
 </p>
 
-## Exercício 03 (Entrega obrigatória)
+## Exercício 03
 O leopardo das neves é um animal que se camufla muito bem em terreno pedregoso e seco. A imagem a seguir mostra este animal. Você consegue encontrá-lo?
 
 ![](img/ex3.png).
@@ -90,7 +90,7 @@ Neste exercicio, trabalhando no arquivo [ex3.py](./ex3.py) você deve fazer o se
 </details>
 </p>
 
-## Exercício 04 (Entrega obrigatória)
+## Exercício 04
 A imagem fornecida contém a bandeira da Antártida e a do Canadá.
 
 ![](img/ex4.png)
