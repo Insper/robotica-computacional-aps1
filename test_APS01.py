@@ -154,7 +154,6 @@ def test_ex6():
 
 
 def test_time_challenge():
-    assert False, delta_6
     assert delta_1 < 0.01, "Tempo de execução do desafio 1 está muito alto, tente uma forma de otimizar seu código - Dica: Cheque os exercícios da atividade 2 do módulo 1." 
     assert delta_2 < 0.05, "Tempo de execução do desafio 2 está muito alto, tente uma forma de otimizar seu código"
     assert delta_3 < 0.05, "Tempo de execução do desafio 3 está muito alto, tente uma forma de otimizar seu código"
