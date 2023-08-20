@@ -1,7 +1,7 @@
 # APS01 - Imagens, formato RGB e matrizes
 **Importante:** Sempre densevolvam nos arquivos `.py` dos respectivos exercícios.
 
-**Aviso 1:** Não modifique o arquivo de teste, `test_APS01.py`.
+**Aviso 1:** Não modifique o arquivo de teste, `test.py`.
 
 **Aviso 2:** Lembre-se de fazer dar commit e push no seu repositório até o horário limite de entrega.
 
@@ -12,8 +12,15 @@
 Para testar seu código, execute o  teste automatico usando o comando abaixo no terminal:
 
 ```bash
-pytest
+pytest test.py
 ```
+
+Para testar apenas um exercício:
+
+```bash
+pytest test.py::test_ex1
+```
+
 Caso aparece um erro de `ModuleNotFoundError`, execute o comando abaixo no terminal:
 
 ```bash
