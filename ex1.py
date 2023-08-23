@@ -23,8 +23,8 @@ def equaliza(gray: np.ndarray) -> np.ndarray:
 
 
 if __name__ == "__main__":
-    img = cv2.imread("img/RinTinTin.jpg")
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    bgr = cv2.imread("img/RinTinTin.jpg")
+    gray = cv2.cvtColor(bgr, cv2.COLOR_BGR2GRAY)
 
     # Faz o processamento
     saida = equaliza(gray)
@@ -32,7 +32,7 @@ if __name__ == "__main__":
 
 
     # NOTE que a OpenCV terminal trabalha com BGR
-    cv2.imshow('entrada', img)
+    cv2.imshow('entrada', bgr)
 
     cv2.imshow('saida', saida)
 

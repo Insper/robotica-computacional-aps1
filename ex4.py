@@ -28,7 +28,7 @@ def canada(bgr: np.ndarray) -> np.ndarray:
     res = bgr.copy()
     return res
 
-def run() -> None:
+def run(bgr: np.ndarray) -> None:
     """Não mude ou renomeie esta função
         deve chamar as funções antartida e canada, salvar os resultados em arquivo e mostrar na tela em janelas separadas.
     """
@@ -36,9 +36,9 @@ def run() -> None:
 
 
 if __name__ == "__main__":
-    img = cv2.imread("img/ex4.png")
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    bgr = cv2.imread("img/ex4.png")
+    gray = cv2.cvtColor(bgr, cv2.COLOR_BGR2GRAY)
 
-    run()
+    run(bgr)
 
 

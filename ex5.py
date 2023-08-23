@@ -28,16 +28,16 @@ def realiza_diferencas(bgr: np.ndarray) -> np.ndarray:
 
 
 if __name__ == "__main__":
-    img = cv2.imread("img/ex5.png")
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    bgr = cv2.imread("img/ex5.png")
+    gray = cv2.cvtColor(bgr, cv2.COLOR_BGR2GRAY)
 
     # Faz o processamento
-    saida = realiza_diferencas(gray)
+    saida = realiza_diferencas(bgr)
     cv2.imwrite("ex5_diferencas.png", saida)
 
 
     # NOTE que a OpenCV terminal trabalha com BGR
-    cv2.imshow('entrada', img)
+    cv2.imshow('entrada', bgr)
     cv2.moveWindow('entrada',200,200)
     cv2.imshow('saida', saida)
     cv2.moveWindow('saida',800,200)

@@ -23,19 +23,17 @@ def substitui_x_por_cinza(gray: np.ndarray) -> np.ndarray:
     return res
 
 if __name__ == "__main__":
-    img = cv2.imread("img/ex6.png")
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    bgr = cv2.imread("img/ex6.png")
+    gray = cv2.cvtColor(bgr, cv2.COLOR_BGR2GRAY)
 
     # Faz o processamento
     saida = substitui_x_por_cinza(gray)
     cv2.imwrite("ex6_troca_x.png", saida)
 
-
-    # NOTE que a OpenCV terminal trabalha com BGR
-    # rescale para melhorar a visualização
-    img = cv2.resize(img, None, fx=10, fy=10, interpolation=cv2.INTER_NEAREST)
+    # Rescale para melhorar a visualização
+    gray = cv2.resize(gray, None, fx=10, fy=10, interpolation=cv2.INTER_NEAREST)
     saida = cv2.resize(saida, None, fx=10, fy=10, interpolation=cv2.INTER_NEAREST)
-    cv2.imshow('entrada', img)
+    cv2.imshow('entrada', gray)
     cv2.moveWindow('entrada',200,200)
     cv2.imshow('saida', saida)
     cv2.moveWindow('saida',800,200)

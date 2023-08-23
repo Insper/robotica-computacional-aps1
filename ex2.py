@@ -27,15 +27,15 @@ def realca_caixa_vermelha(bgr: np.ndarray) -> np.ndarray:
 
 
 if __name__ == "__main__":
-    img = cv2.imread("img/ex2.jpg")
+    bgr = cv2.imread("img/ex2.jpg")
     
     # Faz o processamento
-    saida = realca_caixa_vermelha(img)
+    saida = realca_caixa_vermelha(bgr)
     cv2.imwrite( "saida_ex2.png", saida)
 
 
     # NOTE que a OpenCV terminal trabalha com BGR
-    cv2.imshow('entrada', img)
+    cv2.imshow('entrada', bgr)
 
     cv2.imshow('saida', saida)
 

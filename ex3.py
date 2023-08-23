@@ -23,14 +23,14 @@ def recorta_leopardo(bgr: np.ndarray) -> np.ndarray:
 
 
 if __name__ == "__main__":
-    img = cv2.imread("img/ex3.png")
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    bgr = cv2.imread("img/ex3.png")
+    gray = cv2.cvtColor(bgr, cv2.COLOR_BGR2GRAY)
 
     # Faz o processamento
-    saida = recorta_leopardo(img)
+    saida = recorta_leopardo(bgr)
 
     # NOTE que a OpenCV terminal trabalha com BGR
-    cv2.imshow('entrada', img)
+    cv2.imshow('entrada', bgr)
 
     cv2.imshow('saida', saida)
 
